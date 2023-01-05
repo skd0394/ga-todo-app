@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 name: Github Action No. 0
 
 on:
   push:
   branches: ["main"]
+=======
+name: Github Action No. 2
+
+on:
+  push:
+    branches: ["main"]
+>>>>>>> 80be67e1ef7027365bca96f2890a3ea4c901e99a
 
 jobs:
   build:
@@ -11,13 +19,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Node
+<<<<<<< HEAD
         uses: action/setup-node@v3
+=======
+        uses: actions/setup-node@v3
+>>>>>>> 80be67e1ef7027365bca96f2890a3ea4c901e99a
         with:
           node-version: "16"
       - name: Install Dependencies
         run: npm ci
       - name: Build Project
         run: npm run build
+<<<<<<< HEAD
   deploy: 
     runs-on: ubuntu-latest
     needs: build
@@ -29,3 +42,15 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
               
+=======
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to Github pages
+        id: deployment
+        uses: action/deploy-pages@v1
+>>>>>>> 80be67e1ef7027365bca96f2890a3ea4c901e99a
